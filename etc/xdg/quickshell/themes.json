@@ -1,0 +1,135 @@
+{
+  "$schema": "./themes.schema.json",
+  "themes": {
+    "dynamic": {
+      "name": "Dynamic (Wallpaper)",
+      "colors": {
+        "background": "#1a1b26",
+        "foreground": "#c0caf5",
+        "accent": "#7aa2f7",
+        "red": "#f7768e",
+        "green": "#9ece6a",
+        "yellow": "#e0af68",
+        "orange": "#ff9e64",
+        "cyan": "#7dcfff",
+        "statusCritical": "#f7768e",
+        "statusWarning": "#ff9e64",
+        "statusMedium": "#e0af68",
+        "statusGood": "#9ece6a"
+      },
+      "layout": {
+        "radius": 10,
+        "itemRadius": 4,
+        "screenCornerRadius": 12,
+        "panelCornerRadius": 10
+      }
+    },
+    "dynamic-inverted": {
+      "name": "Dynamic Inverted (Wallpaper)",
+      "colors": {
+        "background": "#eff1f5",
+        "foreground": "#4c4f69",
+        "accent": "#1e66f5",
+        "red": "#d20f39",
+        "green": "#40a02b",
+        "yellow": "#df8e1d",
+        "orange": "#fe640b",
+        "cyan": "#179299",
+        "statusCritical": "#d20f39",
+        "statusWarning": "#fe640b",
+        "statusMedium": "#df8e1d",
+        "statusGood": "#40a02b"
+      },
+      "layout": {
+        "radius": 10,
+        "itemRadius": 4,
+        "screenCornerRadius": 12,
+        "panelCornerRadius": 10
+      }
+    },
+    "base16-polar-dark": {
+      "name": "Polar Dark",
+      "layout": {
+        "radius": 10,
+        "itemRadius": 4,
+        "screenCornerRadius": 12,
+        "panelCornerRadius": 10
+      }
+    },
+    "base16-polar-light": {
+      "name": "Polar Light",
+      "layout": {
+        "radius": 10,
+        "itemRadius": 4,
+        "screenCornerRadius": 12,
+        "panelCornerRadius": 10
+      }
+    },
+    "base16-tokyo-night-dark": { "name": "Tokyo Night Dark", "layout": { "radius": 10, "itemRadius": 6, "screenCornerRadius": 12, "panelCornerRadius": 10 } },
+    "base16-tokyo-night-storm": { "name": "Tokyo Night Storm", "layout": { "radius": 10, "itemRadius": 6, "screenCornerRadius": 12, "panelCornerRadius": 10 } },
+    
+    "base16-catppuccin-mocha": { "name": "Catppuccin Mocha", "layout": { "radius": 16, "itemRadius": 8, "screenCornerRadius": 20, "panelCornerRadius": 16 } },
+    "base16-catppuccin-macchiato": { "name": "Catppuccin Macchiato", "layout": { "radius": 16, "itemRadius": 8, "screenCornerRadius": 20, "panelCornerRadius": 16 } },
+    "base16-catppuccin-frappe": { "name": "Catppuccin Frappe", "layout": { "radius": 16, "itemRadius": 8, "screenCornerRadius": 20, "panelCornerRadius": 16 } },
+    "base16-catppuccin-latte": { "name": "Catppuccin Latte", "layout": { "radius": 16, "itemRadius": 8, "screenCornerRadius": 20, "panelCornerRadius": 16 } },
+    
+    "base16-gruvbox-dark-hard": { "name": "Gruvbox Dark", "layout": { "radius": 0, "itemRadius": 0, "screenCornerRadius": 0, "panelCornerRadius": 0 } },
+    "base16-gruvbox-light-hard": { "name": "Gruvbox Light", "layout": { "radius": 0, "itemRadius": 0, "screenCornerRadius": 0, "panelCornerRadius": 0 } },
+    
+    "base16-nord": { "name": "Nord", "layout": { "radius": 6, "itemRadius": 4, "screenCornerRadius": 8, "panelCornerRadius": 6 } },
+    
+    "base16-dracula": { "name": "Dracula", "layout": { "radius": 4, "itemRadius": 2, "screenCornerRadius": 6, "panelCornerRadius": 4 } },
+    
+    "base16-rose-pine": { "name": "Rose Pine", "layout": { "radius": 12, "itemRadius": 6, "screenCornerRadius": 14, "panelCornerRadius": 12 } },
+    "base16-rose-pine-moon": { "name": "Rose Pine Moon", "layout": { "radius": 12, "itemRadius": 6, "screenCornerRadius": 14, "panelCornerRadius": 12 } },
+    "base16-rose-pine-dawn": { "name": "Rose Pine Dawn", "layout": { "radius": 12, "itemRadius": 6, "screenCornerRadius": 14, "panelCornerRadius": 12 } },
+    
+    "base16-solarized-dark": { "name": "Solarized Dark", "layout": { "radius": 2, "itemRadius": 0, "screenCornerRadius": 0, "panelCornerRadius": 2 } },
+    "base16-solarized-light": { "name": "Solarized Light", "layout": { "radius": 2, "itemRadius": 0, "screenCornerRadius": 0, "panelCornerRadius": 2 } },
+    
+    "base16-monokai": { "name": "Monokai", "layout": { "radius": 0, "itemRadius": 0, "screenCornerRadius": 0, "panelCornerRadius": 0 } },
+    
+    "base16-onedark": { "name": "One Dark", "layout": { "radius": 8, "itemRadius": 4, "screenCornerRadius": 10, "panelCornerRadius": 8 } },
+    
+    "base16-everforest": { "name": "Everforest", "layout": { "radius": 4, "itemRadius": 2, "screenCornerRadius": 6, "panelCornerRadius": 4 } },
+    
+    "base16-ayu-dark": { "name": "Ayu Dark", "layout": { "radius": 8, "itemRadius": 4, "screenCornerRadius": 10, "panelCornerRadius": 8 } },
+    "base16-ayu-light": { "name": "Ayu Light", "layout": { "radius": 8, "itemRadius": 4, "screenCornerRadius": 10, "panelCornerRadius": 8 } },
+    "base16-ayu-mirage": { "name": "Ayu Mirage", "layout": { "radius": 8, "itemRadius": 4, "screenCornerRadius": 10, "panelCornerRadius": 8 } },
+    
+    "base16-kanagawa": { "name": "Kanagawa", "layout": { "radius": 4, "itemRadius": 2, "screenCornerRadius": 6, "panelCornerRadius": 4 } },
+    
+    "base16-material": { "name": "Material", "layout": { "radius": 10, "itemRadius": 4, "screenCornerRadius": 12, "panelCornerRadius": 10 } },
+    "base16-material-palenight": { "name": "Material Palenight", "layout": { "radius": 10, "itemRadius": 4, "screenCornerRadius": 12, "panelCornerRadius": 10 } },
+    
+    "base16-github-dark": { "name": "GitHub Dark", "layout": { "radius": 6, "itemRadius": 4, "screenCornerRadius": 8, "panelCornerRadius": 6 } },
+    "base16-github": { "name": "GitHub Light", "layout": { "radius": 6, "itemRadius": 4, "screenCornerRadius": 8, "panelCornerRadius": 6 } },
+
+    "base16-oxocarbon-dark": { "name": "Oxocarbon", "layout": { "radius": 0, "itemRadius": 0, "screenCornerRadius": 0, "panelCornerRadius": 0 } },
+    
+    "base16-vesper": { "name": "Vesper", "layout": { "radius": 0, "itemRadius": 0, "screenCornerRadius": 0, "panelCornerRadius": 0 } },
+    "current": {
+      "name": "Current (Tinty)",
+      "colors": {
+        "background": "#1a1b26",
+        "foreground": "#c0caf5",
+        "accent": "#7aa2f7",
+        "red": "#f7768e",
+        "green": "#9ece6a",
+        "yellow": "#e0af68",
+        "orange": "#ff9e64",
+        "cyan": "#7dcfff",
+        "statusCritical": "#f7768e",
+        "statusWarning": "#ff9e64",
+        "statusMedium": "#e0af68",
+        "statusGood": "#9ece6a"
+      },
+      "layout": {
+        "radius": 10,
+        "itemRadius": 4,
+        "screenCornerRadius": 12,
+        "panelCornerRadius": 10
+      }
+    }
+  }
+}

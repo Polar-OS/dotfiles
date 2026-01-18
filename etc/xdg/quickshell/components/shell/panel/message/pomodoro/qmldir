@@ -1,0 +1,4 @@
+module components.pomodoro
+Pomodoro 1.0 Pomodoro.qml
+PomodoroOverlay 1.0 PomodoroOverlay.qml
+PomodoroWidget 1.0 PomodoroWidget.qml

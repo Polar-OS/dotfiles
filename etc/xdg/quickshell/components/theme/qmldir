@@ -1,0 +1,4 @@
+module components.theme
+singleton DynamicThemeGenerator 1.0 DynamicThemeGenerator.qml
+PolarAnimation 1.0 PolarAnimation.qml
+ThemeSync 1.0 ThemeSync.qml

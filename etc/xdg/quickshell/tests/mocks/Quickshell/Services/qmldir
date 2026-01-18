@@ -1,0 +1,7 @@
+singleton Mpris 1.0 Mpris.qml
+singleton Pipewire 1.0 Pipewire.qml
+PwObjectTracker 1.0 PwObjectTracker.qml
+singleton UPower 1.0 UPower.qml
+singleton Notifications 1.0 Notifications.qml
+singleton SystemTray 1.0 SystemTray.qml
+singleton Pam 1.0 Pam.qml

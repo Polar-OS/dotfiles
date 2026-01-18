@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/themes.schema.json",
+  "title": "Quickshell Themes Configuration",
+  "description": "Color theme definitions for Quickshell",
+  "type": "object",
+  "required": ["themes"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "themes": {
+      "type": "object",
+      "description": "Theme definitions keyed by theme ID",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name", "colors", "layout"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Human-readable theme name"
+          },
+          "colors": {
+            "type": "object",
+            "description": "Color palette for the theme",
+            "required": ["background", "foreground", "accent"],
+            "properties": {
+              "background": {
+                "type": "string",
+                "description": "Main background color",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "foreground": {
+                "type": "string",
+                "description": "Main text/foreground color",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "accent": {
+                "type": "string",
+                "description": "Primary accent color for highlights",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "red": {
+                "type": "string",
+                "description": "Red color for warnings",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "green": {
+                "type": "string",
+                "description": "Green color for success",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "yellow": {
+                "type": "string",
+                "description": "Yellow color for info",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "orange": {
+                "type": "string",
+                "description": "Orange color for important indicators",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "cyan": {
+                "type": "string",
+                "description": "Cyan color for secondary accents",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "statusCritical": {
+                "type": "string",
+                "description": "Pastel red for critical status",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "statusWarning": {
+                "type": "string",
+                "description": "Pastel orange for warning status",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "statusMedium": {
+                "type": "string",
+                "description": "Pastel yellow for medium status",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              },
+              "statusGood": {
+                "type": "string",
+                "description": "Pastel green for good status",
+                "pattern": "^#[0-9a-fA-F]{6}$"
+              }
+            }
+          },
+          "layout": {
+            "type": "object",
+            "description": "Layout properties for the theme",
+            "required": ["radius", "itemRadius"],
+            "properties": {
+              "radius": {
+                "type": "integer",
+                "description": "Corner radius for main windows",
+                "minimum": 0,
+                "maximum": 50
+              },
+              "itemRadius": {
+                "type": "integer",
+                "description": "Corner radius for internal UI elements",
+                "minimum": 0,
+                "maximum": 50
+              },
+              "screenCornerRadius": {
+                "type": "integer",
+                "description": "Corner radius for screen borders",
+                "minimum": 0,
+                "maximum": 100
+              },
+              "panelCornerRadius": {
+                "type": "integer",
+                "description": "Corner radius for panel inverted corners",
+                "minimum": 0,
+                "maximum": 50
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

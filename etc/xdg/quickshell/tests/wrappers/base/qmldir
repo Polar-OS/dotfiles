@@ -1,0 +1,15 @@
+BaseButton 1.0 BaseButton.qml
+CarouselView 1.0 CarouselView.qml
+DetailRow 1.0 DetailRow.qml
+ExtendedPanel 1.0 ExtendedPanel.qml
+InvertedCorner 1.0 InvertedCorner.qml
+ManagerView 1.0 ManagerView.qml
+PanelHeader 1.0 PanelHeader.qml
+Panel 1.0 Panel.qml
+PanelStyle 1.0 PanelStyle.qml
+QuickButton 1.0 QuickButton.qml
+ScreenBorder 1.0 ScreenBorder.qml
+SectionSeparator 1.0 SectionSeparator.qml
+SelectionCarousel 1.0 SelectionCarousel.qml
+StatusButton 1.0 StatusButton.qml
+UsageBar 1.0 UsageBar.qml

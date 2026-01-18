@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/config.schema.json",
+  "title": "Quickshell Configuration",
+  "description": "Configuration schema for Quickshell desktop environment",
+  "type": "object",
+  "definitions": {
+    "easingType": {
+      "type": "string",
+      "enum": [
+        "Linear",
+        "InQuad", "OutQuad", "InOutQuad",
+        "InCubic", "OutCubic", "InOutCubic",
+        "InQuart", "OutQuart", "InOutQuart",
+        "InQuint", "OutQuint", "InOutQuint",
+        "InSine", "OutSine", "InOutSine",
+        "InExpo", "OutExpo", "InOutExpo",
+        "InCirc", "OutCirc", "InOutCirc",
+        "InElastic", "OutElastic", "InOutElastic",
+        "InBack", "OutBack", "InOutBack",
+        "InBounce", "OutBounce", "InOutBounce",
+        "Polar"
+      ]
+    },
+    "iconTheme": {
+      "type": "string",
+      "description": "System icon theme name",
+      "default": ""
+    },
+    "chat": {
+      "type": "object",
+      "description": "Chat persistence configuration",
+      "properties": {
+        "lastAgent": { "type": "string", "default": "" },
+        "lastProvider": { "type": "string", "default": "" },
+        "lastModel": { "type": "string", "default": "" }
+      }
+    },
+    "shadow": {
+      "type": "string",
+      "description": "Shadow color (hex)",
+      "pattern": "^#[0-9a-fA-F]{8}$",
+      "default": "#80000000"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+CpuIndicator 1.0 CpuIndicator.qml
+CpuManager 1.0 CpuManager.qml
+MemoryIndicator 1.0 MemoryIndicator.qml
+MemoryManager 1.0 MemoryManager.qml
+NetSpeedIndicator 1.0 NetSpeedIndicator.qml
+NetSpeedManager 1.0 NetSpeedManager.qml
+PowerProfilesController 1.0 PowerProfilesController.qml

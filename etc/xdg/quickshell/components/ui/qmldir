@@ -1,0 +1,25 @@
+module components.base
+Panel 1.0 panel/Panel.qml
+PanelStyle 1.0 panel/PanelStyle.qml
+InvertedCorner 1.0 panel/InvertedCorner.qml
+ScreenBorder 1.0 panel/ScreenBorder.qml
+PanelHeader 1.0 panel/PanelHeader.qml
+ExtendedPanel 1.0 panel/ExtendedPanel.qml
+ManagerView 1.0 panel/ManagerView.qml
+
+QuickButton 1.0 button/QuickButton.qml
+BaseButton 1.0 button/BaseButton.qml
+StatusButton 1.0 button/StatusButton.qml
+
+CarouselView 1.0 carousel/CarouselView.qml
+SelectionCarousel 1.0 carousel/SelectionCarousel.qml
+
+DetailRow 1.0 layout/DetailRow.qml
+SectionSeparator 1.0 layout/SectionSeparator.qml
+UsageBar 1.0 layout/UsageBar.qml
+
+BaseIndicator 1.0 indicators/BaseIndicator.qml
+InteractiveBar 1.0 indicators/InteractiveBar.qml
+SmartIcon 1.0 indicators/SmartIcon.qml
+
+OverlayWindow 1.0 shell/OverlayWindow.qml

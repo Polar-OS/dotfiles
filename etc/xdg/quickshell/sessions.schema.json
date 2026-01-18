@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/sessions.schema.json",
+  "title": "Quickshell Sessions Configuration",
+  "description": "Session definitions for launching app groups",
+  "type": "object",
+  "required": ["sessions"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "sessions": {
+      "type": "array",
+      "description": "List of sessions",
+      "items": {
+        "type": "object",
+        "required": ["name", "icon", "desc", "apps"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Session display name"
+          },
+          "icon": {
+            "type": "string",
+            "description": "Icon character from Nerd Font or other icon font"
+          },
+          "desc": {
+            "type": "string",
+            "description": "Short description of the session"
+          },
+          "apps": {
+            "type": "array",
+            "description": "Applications to launch in this session",
+            "items": {
+              "type": "object",
+              "required": ["command", "workspace"],
+              "properties": {
+                "command": {
+                  "type": "string",
+                  "description": "Shell command to launch the application"
+                },
+                "workspace": {
+                  "type": "string",
+                  "description": "Target workspace name"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

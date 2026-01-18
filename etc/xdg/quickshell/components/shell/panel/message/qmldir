@@ -1,0 +1,5 @@
+module components.notifications
+Clock 1.0 Clock.qml
+Messages 1.0 Messages.qml
+NotificationList 1.0 NotificationList.qml
+SystemTray 1.0 SystemTray.qml

@@ -1,0 +1,42 @@
+{
+  "dynamic": {
+    "name": "Dynamic (Wallpaper)",
+    "colors": {
+      "background": "#1a110f",
+      "foreground": "#f1dfda",
+      "accent": "#ffb59d",
+      "red": "#ffb4ab",
+      "green": "#e7bdb1",
+      "yellow": "#8f4c35",
+      "orange": "#d7c68d",
+      "cyan": "#d7c68d",
+      "blue": "#ffb59d",
+      "purple": "#ffb59d",
+      "magenta": "#e7bdb1",
+      "statusCritical": "#ffb4ab",
+      "statusWarning": "#d7c68d",
+      "statusMedium": "#8f4c35",
+      "statusGood": "#e7bdb1"
+    }
+  },
+  "dynamic-inverted": {
+    "name": "Dynamic Inverted (Wallpaper)",
+    "colors": {
+      "background": "#fff8f6",
+      "foreground": "#231917",
+      "accent": "#8f4c35",
+      "red": "#ba1a1a",
+      "green": "#77574d",
+      "yellow": "#ffb59d",
+      "orange": "#6a5e2f",
+      "cyan": "#6a5e2f",
+      "blue": "#8f4c35",
+      "purple": "#ffb59d",
+      "magenta": "#e7bdb1",
+      "statusCritical": "#ba1a1a",
+      "statusWarning": "#6a5e2f",
+      "statusMedium": "#ffb59d",
+      "statusGood": "#77574d"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/menus.schema.json",
+  "title": "Quickshell Menus Configuration",
+  "description": "Configuration for menus and submenus in Quickshell",
+  "type": "object",
+  "required": ["menus", "submenus"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "menus": {
+      "type": "array",
+      "description": "Top-level menu items",
+      "items": {
+        "type": "object",
+        "required": ["name", "icon", "desc", "action"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Display name of the menu item"
+          },
+          "icon": {
+            "type": "string",
+            "description": "Icon character from Nerd Font or other icon font"
+          },
+          "desc": {
+            "type": "string",
+            "description": "Short description shown as tooltip"
+          },
+          "action": {
+            "type": "string",
+            "description": "Action to perform (submenu:xxx, ipc:xxx, exec:xxx)"
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the menu item is enabled/visible",
+            "default": true
+          }
+        }
+      }
+    },
+    "submenus": {
+      "type": "object",
+      "description": "Submenu definitions keyed by submenu name",
+      "additionalProperties": {
+        "type": "array",
+        "description": "Items in a submenu",
+        "items": {
+          "type": "object",
+          "required": ["name", "icon", "desc", "action"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "Display name of the menu item"
+            },
+            "icon": {
+              "type": "string",
+              "description": "Icon character from Nerd Font or other icon font"
+            },
+            "desc": {
+              "type": "string",
+              "description": "Short description shown as tooltip"
+            },
+            "action": {
+              "type": "string",
+              "description": "Action to perform (ipc:xxx, exec:xxx)"
+            },
+            "enabled": {
+              "type": "boolean",
+              "description": "Whether the menu item is enabled/visible",
+              "default": true
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,3 @@
+module components.config
+singleton Config 1.0 Config.qml
+singleton ConfigLoader 1.0 ConfigLoader.qml

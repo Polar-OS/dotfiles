@@ -1,0 +1,8 @@
+module components.status
+BatteryIndicator 1.0 BatteryIndicator.qml
+BatteryManager 1.0 BatteryManager.qml
+BluetoothIndicator 1.0 BluetoothIndicator.qml
+BluetoothManager 1.0 BluetoothManager.qml
+Status 1.0 Status.qml
+WifiIndicator 1.0 WifiIndicator.qml
+WifiManager 1.0 WifiManager.qml

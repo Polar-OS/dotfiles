@@ -1,0 +1,20 @@
+{
+  "current": {
+    "name": "Tokyo Night Dark",
+    "colors": {
+      "name": "Tokyo Night Dark",
+      "background": "#1A1B26",
+      "foreground": "#A9B1D6",
+      "accent": "#2AC3DE",
+      "red": "#C0CAF5",
+      "green": "#9ECE6A",
+      "yellow": "#0DB9D7",
+      "orange": "#A9B1D6",
+      "cyan": "#B4F9F8",
+      "statusCritical": "#C0CAF5",
+      "statusWarning": "#A9B1D6",
+      "statusMedium": "#0DB9D7",
+      "statusGood": "#9ECE6A"
+    }
+  }
+}

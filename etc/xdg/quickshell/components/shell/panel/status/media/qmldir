@@ -1,0 +1,7 @@
+module components.media
+MprisController 1.0 MprisController.qml
+MprisPlayer 1.0 MprisPlayer.qml
+PipewireDeviceSelector 1.0 PipewireDeviceSelector.qml
+PlayerIndicator 1.0 PlayerIndicator.qml
+VolumeBar 1.0 VolumeBar.qml
+VolumeIcon 1.0 VolumeIcon.qml

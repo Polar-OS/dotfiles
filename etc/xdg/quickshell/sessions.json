@@ -1,0 +1,46 @@
+{
+    "$schema": "./sessions.schema.json",
+    "sessions": [
+        {
+            "name": "Development",
+            "icon": "\udb80\udd69",
+            "desc": "Development environment",
+            "apps": [
+                {
+                    "command": "uwsm app -- ghostty",
+                    "workspace": "dev"
+                },
+                {
+                    "command": "uwsm app -- code",
+                    "workspace": "dev"
+                }
+            ]
+        },
+        {
+            "name": "Web",
+            "icon": "\udb81\udd9f",
+            "desc": "Web browsing session",
+            "apps": [
+                {
+                    "command": "uwsm app -- firefox",
+                    "workspace": "web"
+                }
+            ]
+        },
+        {
+            "name": "Communication",
+            "icon": "\udb83\udede",
+            "desc": "Chat and email",
+            "apps": [
+                {
+                    "command": "uwsm app -- flatpak run org.signal.Signal",
+                    "workspace": "chat"
+                },
+                {
+                    "command": "uwsm app -- thunderbird",
+                    "workspace": "chat"
+                }
+            ]
+        }
+    ]
+}
