@@ -2,14 +2,14 @@
 
 REPO_DIR="/tmp/dotfiles-repo"
 XDG_DEST_DIR="./etc/xdg"
-SKEL_DEST_DIR="./etc/skel"
 PROFILE_D_DIR="./etc/profile.d"
 SSH_DEST_DIR="./etc/ssh"
+USR_SHARE_DIR="./usr/share"
 
 mkdir -p "$XDG_DEST_DIR"
-mkdir -p "$SKEL_DEST_DIR"
 mkdir -p "$PROFILE_D_DIR"
 mkdir -p "$SSH_DEST_DIR"
+mkdir -p "$USR_SHARE_DIR"
 
 transform_name() {
     local name="$1"
@@ -124,8 +124,8 @@ process_item_recursive() {
     fi
 }
 
-rm -rf "$XDG_DEST_DIR" "$SKEL_DEST_DIR" "$PROFILE_D_DIR" "$SSH_DEST_DIR" "./etc/zsh"
-mkdir -p "$XDG_DEST_DIR" "$SKEL_DEST_DIR" "$PROFILE_D_DIR" "$SSH_DEST_DIR" "./etc/zsh"
+rm -rf "$XDG_DEST_DIR" "$PROFILE_D_DIR" "$SSH_DEST_DIR" "./etc/zshrc" "$USR_SHARE_DIR/backgrounds" "$USR_SHARE_DIR/plymouth" "$USR_SHARE_DIR/wayland-sessions"
+mkdir -p "$XDG_DEST_DIR" "$PROFILE_D_DIR" "$SSH_DEST_DIR"
 
 if [ ! -d "$REPO_DIR" ]; then
     export CI=true DEBIAN_FRONTEND=noninteractive GIT_TERMINAL_PROMPT=0 GCM_INTERACTIVE=never HOMEBREW_NO_AUTO_UPDATE=1 GIT_EDITOR=: EDITOR=: VISUAL='' GIT_SEQUENCE_EDITOR=: GIT_MERGE_AUTOEDIT=no GIT_PAGER=cat PAGER=cat npm_config_yes=true PIP_NO_INPUT=1 YARN_ENABLE_IMMUTABLE_INSTALLS=false; git clone https://github.com/frieser/dotfiles "$REPO_DIR"
@@ -137,3 +137,8 @@ for item in "$REPO_DIR"/*; do
     [ -e "$item" ] || continue
     process_item "$item" ""
 done
+
+SPAWN_KDL="$XDG_DEST_DIR/niri/spawn.kdl"
+if [ -f "$SPAWN_KDL" ]; then
+    sed -i 's|spawn-sh-at-startup "QML_IMPORT_PATH=.*quickshell"|spawn-sh-at-startup "QML_IMPORT_PATH=/usr/lib64/qt6/qml LD_LIBRARY_PATH=/usr/lib64/qt6/qml/Niri uwsm app -- quickshell > /tmp/quickshell-spawn.log 2>\&1"|' "$SPAWN_KDL"
+fi
