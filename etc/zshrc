@@ -1,0 +1,164 @@
+# Initialize zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+
+# initialize tmux
+if [ ! -d "$HOME/.config/tmux/plugins/tpm" ]; then
+    git clone https://github.com/tmux-plugins/tpm $HOME/.config/tmux/plugins/tpm
+    # TMUX_PLUGIN_MANAGER_PATH=$HOME/.config/tmux/plugins $HOME/.config/tmux/plugins/tpm/bin/install_plugins
+fi
+export TMUX_PLUGIN_MANAGER_PATH=$HOME/.config/tmux/plugins
+
+
+# Completion configuration
+autoload -Uz compinit
+compinit
+
+# Enable zinit completions with blockf to prevent conflicts
+# zinit ice blockf
+# zinit light zsh-users/zsh-completions
+
+# General settings
+export EDITOR="nvim"
+export SHELL="nu"
+export TERM=xterm-256color
+
+# History configuration
+HISTFILE="$HOME/.local/share/zsh/history"
+HISTSIZE=10000
+SAVEHIST=10000
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+# Additional PATH entries
+export PATH="$HOME/.local/bin:/usr/local/go/bin:$HOME/go/bin:$HOME/.npm-packages/bin:$HOME/.local/share/soar/bin:$HOME/.cargo/bin:$PATH"
+
+# Custom aliases
+alias h="distrobox-host-exec"
+
+alias sn="atuin script new"
+alias s="atuin script run"
+alias sl="atuin script list"
+alias se="atuin script edit"
+alias sd="atuin script delete"
+
+alias powersave="echo power | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference"
+
+# exa general use
+alias ls="eza -l -G --icons --no-permissions --no-user --no-time --no-filesize" alias tree="eza -l -G --icons --no-permissions --no-user --no-time --no-filesize -T"
+alias l='eza -lbF --git'                                                # list, size, type, git
+alias ll='eza -lbGF --git'                                             # long list
+alias llm='eza -lbGd --git --sort=modified'                            # long list, modified date sort
+alias la='eza -lbhHigUmuSa --time-style=long-iso --git --color-scale'  # all list
+alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale' # all + extended list
+
+# exa specialty views
+alias lS='exa -1'                                                              # one column, just names
+alias lt='exa --tree --level=2'                                         # tree
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias h="distrobox-host-exec"
+alias vim="nvim"
+alias v="nvim"
+alias y="yazi"
+alias k="kubectl"
+alias kctx="kubectx"
+alias bazel="bazelisk"
+alias ll="ls -l"
+alias egrep="grep -E"  # Suppress egrep obsolescence warning
+alias cm="chezmoi"
+alias toolbox="distrobox enter toolbox"
+alias t="distrobox enter toolbox"
+
+alias vpn="(docker rm -f bbva-vpn & sleep 3 && cd /var/home/frieser/Documents/work/bbva/tools/bbva-vpn/ && ./start-vpn.sh /forticlient/fortivpn.sh)"
+alias proxy="(cd /var/home/frieser/Documents/work/bbva/tools/bbva-vpn/ && sshuttle -NHr root@localhost:30022 10.48.0.0/16 10.50.0.0/16 10.51.0.0/16 10.52.0.0/16 10.111.0.0/16 22.0.0.0/8 23.1.2.0/24 23.1.176.0/24 23.2.2.0/24 23.4.0.0/16 100.64.0.0/10 --ssh-cmd 'ssh -o StrictHostKeyChecking=no -i podman-data/id_rsa' --no-latency-control --ns-hosts 10.51.33.33 --to-ns 10.51.33.33)"
+
+# jj alias
+alias j="jj"
+alias jl="jj log"
+alias jst="jj st"
+alias jrb="jj rebase"
+alias jp="jj git push"
+alias jpl="jj git pull"
+alias jn="jj new"
+alias jd="jj describe"
+alias je="jj edit"
+alias jb="jj bookmark"
+alias ja="jj abandon"
+
+# Function aliases
+cd() {
+    builtin cd "$@" && ls
+}
+
+c() {
+    _z "$@" && ls
+}
+
+# yazi helper
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+# Core plugins with light-mode for better startup performance
+zinit light-mode for \
+    zdharma-continuum/fast-syntax-highlighting \
+    zsh-users/zsh-autosuggestions \
+    MichaelAquilina/zsh-you-should-use \
+    Aloxaf/fzf-tab \
+    jeffreytse/zsh-vi-mode 
+
+# Oh-My-Zsh libs and completions
+# zinit snippet OMZ::lib/completion.zsh
+# zinit snippet OMZ::lib/compfix.zsh
+zinit snippet OMZ::lib/git.zsh
+
+# Oh-My-Zsh plugins for various development tools
+zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
+# zinit snippet OMZ::plugins/web-search/web-search.plugin.zsh
+# zinit snippet OMZ::plugins/aws/aws.plugin.zsh
+# zinit snippet OMZ::plugins/npm/npm.plugin.zsh
+# zinit snippet OMZ::plugins/pip/pip.plugin.zsh
+zinit snippet OMZ::plugins/git/git.plugin.zsh
+# zinit snippet OMZ::plugins/terraform/terraform.plugin.zsh
+zinit snippet OMZ::plugins/ssh/ssh.plugin.zsh
+zinit snippet OMZ::plugins/systemd/systemd.plugin.zsh
+zinit snippet OMZ::plugins/podman/podman.plugin.zsh
+# zinit snippet OMZ::plugins/git-extras/git-extras.plugin.zsh
+# zinit snippet OMZ::plugins/git-lfs/git-lfs.plugin.zsh
+#
+source <(jj util completion zsh)
+
+# Pure theme configuration
+zinit ice pick"async.zsh" src"pure.zsh"
+zinit light sindresorhus/pure
+
+# Atuin configuration
+zinit ice as"command" from"gh-r" bpick"atuin-*.tar.gz" mv"atuin*/atuin -> atuin" \
+    atclone"./atuin init zsh > init.zsh; ./atuin gen-completions --shell zsh > _atuin" \
+    atpull"%atclone" src"init.zsh"
+zinit light atuinsh/atuin
+
+zinit load atuinsh/atuin
+
+# vm_after_init_commands+=(eval "$(zoxide init zsh)")

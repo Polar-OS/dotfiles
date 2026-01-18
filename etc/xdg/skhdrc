@@ -1,0 +1,21 @@
+ctrl + shift - return : open -a Ghostty
+
+cmd - b : open -a Firefox
+cmd - g : open -a Google\ Chrome
+cmd - m : open -a TickTick
+
+cmd - j : yabai -m window --focus south
+cmd - k : yabai -m window --focus north
+cmd - l : yabai -m window --focus east
+cmd - h : yabai -m window --focus west
+
+cmd + alt - j : yabai -m window --swap south
+cmd + alt - k : yabai -m window --swap north
+cmd + alt - l : yabai -m window --swap east
+cmd + alt - h : yabai -m window --swap west
+
+cmd - o : yabai -m window --toggle split
+
+cmd - x : yabai -m window --toggle zoom-fullscreen
+
+cmd - q : yabai -m window --close

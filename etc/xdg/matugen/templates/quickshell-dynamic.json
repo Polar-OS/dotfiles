@@ -1,0 +1,42 @@
+{
+  "dynamic": {
+    "name": "Dynamic (Wallpaper)",
+    "colors": {
+      "background": "{{colors.background.dark.hex}}",
+      "foreground": "{{colors.on_background.dark.hex}}",
+      "accent": "{{colors.primary.dark.hex}}",
+      "red": "{{colors.error.dark.hex}}",
+      "green": "{{colors.secondary.dark.hex}}",
+      "yellow": "{{colors.inverse_primary.dark.hex}}",
+      "orange": "{{colors.tertiary.dark.hex}}",
+      "cyan": "{{colors.tertiary.dark.hex}}",
+      "blue": "{{colors.primary.dark.hex}}",
+      "purple": "{{colors.primary_fixed_dim.dark.hex}}",
+      "magenta": "{{colors.secondary_fixed_dim.dark.hex}}",
+      "statusCritical": "{{colors.error.dark.hex}}",
+      "statusWarning": "{{colors.tertiary.dark.hex}}",
+      "statusMedium": "{{colors.inverse_primary.dark.hex}}",
+      "statusGood": "{{colors.secondary.dark.hex}}"
+    }
+  },
+  "dynamic-inverted": {
+    "name": "Dynamic Inverted (Wallpaper)",
+    "colors": {
+      "background": "{{colors.background.light.hex}}",
+      "foreground": "{{colors.on_background.light.hex}}",
+      "accent": "{{colors.primary.light.hex}}",
+      "red": "{{colors.error.light.hex}}",
+      "green": "{{colors.secondary.light.hex}}",
+      "yellow": "{{colors.inverse_primary.light.hex}}",
+      "orange": "{{colors.tertiary.light.hex}}",
+      "cyan": "{{colors.tertiary.light.hex}}",
+      "blue": "{{colors.primary.light.hex}}",
+      "purple": "{{colors.primary_fixed_dim.light.hex}}",
+      "magenta": "{{colors.secondary_fixed_dim.light.hex}}",
+      "statusCritical": "{{colors.error.light.hex}}",
+      "statusWarning": "{{colors.tertiary.light.hex}}",
+      "statusMedium": "{{colors.inverse_primary.light.hex}}",
+      "statusGood": "{{colors.secondary.light.hex}}"
+    }
+  }
+}

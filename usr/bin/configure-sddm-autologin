@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Configuration file path
+CONF_FILE="/etc/sddm.conf.d/autologin.conf"
+
+# If the file exists and User is already set, exit
+if [ -f "$CONF_FILE" ] && grep -q "^User=" "$CONF_FILE"; then
+    exit 0
+fi
+
+# Find the user with UID 1000
+TARGET_USER=$(getent passwd | awk -F: '$3 == 1000 {print $1}')
+
+if [ -n "$TARGET_USER" ]; then
+    echo "Configuring SDDM autologin for user: $TARGET_USER"
+    
+    # Ensure directory exists
+    mkdir -p $(dirname "$CONF_FILE")
+    
+    # If file exists, append User. If not, create it.
+    if [ -f "$CONF_FILE" ]; then
+         # Use sed to add User after [Autologin] if it exists, otherwise append
+         if grep -q "\[Autologin\]" "$CONF_FILE"; then
+             sed -i "/\[Autologin\]/a User=$TARGET_USER" "$CONF_FILE"
+         else
+             echo -e "\n[Autologin]\nUser=$TARGET_USER" >> "$CONF_FILE"
+         fi
+    else
+        echo -e "[Autologin]\nUser=$TARGET_USER\nSession=niri.desktop" > "$CONF_FILE"
+    fi
+else
+    echo "No user with UID 1000 found."
+fi

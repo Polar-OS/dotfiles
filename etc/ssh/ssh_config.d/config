@@ -1,0 +1,6 @@
+Host gh-vip.es.nextgen.igrupobbva
+    User git
+    PubkeyAcceptedAlgorithms +ssh-rsa
+    HostkeyAlgorithms +ssh-rsa
+
+
