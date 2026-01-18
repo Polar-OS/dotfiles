@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Polar
+Description=Polar 8-bit Cyberpunk Theme
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/polar-theme
+ScriptFile=/usr/share/plymouth/themes/polar-theme/polar-theme.script
