@@ -1,3 +1,0 @@
-spawn-sh-at-startup "QML_IMPORT_PATH=/usr/lib64/qt6/qml LD_LIBRARY_PATH=/usr/lib64/qt6/qml/Niri uwsm app -- quickshell > /tmp/quickshell-spawn.log 2>&1"
-spawn-sh-at-startup "uwsm app -- hypridle -c /var/home/frieser/.config/hypr/hypridle.conf"
-spawn-sh-at-startup "uwsm app -- opencode serve --port 4098"
