@@ -1,7 +1,7 @@
 #!/bin/bash
 
 REPO_DIR="/tmp/dotfiles-repo"
-XDG_DEST_DIR="./etc/xdg"
+XDG_DEST_DIR="./etc"
 PROFILE_D_DIR="./etc/profile.d"
 SSH_DEST_DIR="./etc/ssh"
 USR_SHARE_DIR="./usr/share"
@@ -124,7 +124,10 @@ process_item_recursive() {
     fi
 }
 
-rm -rf "$XDG_DEST_DIR" "$PROFILE_D_DIR" "$SSH_DEST_DIR" "./etc/zshrc" "$USR_SHARE_DIR/backgrounds" "$USR_SHARE_DIR/plymouth" "$USR_SHARE_DIR/wayland-sessions"
+if [ "$XDG_DEST_DIR" != "./etc" ]; then
+    rm -rf "$XDG_DEST_DIR"
+fi
+rm -rf "$PROFILE_D_DIR" "$SSH_DEST_DIR" "./etc/zshrc" "$USR_SHARE_DIR/backgrounds" "$USR_SHARE_DIR/plymouth" "$USR_SHARE_DIR/wayland-sessions"
 mkdir -p "$XDG_DEST_DIR" "$PROFILE_D_DIR" "$SSH_DEST_DIR"
 
 if [ ! -d "$REPO_DIR" ]; then
