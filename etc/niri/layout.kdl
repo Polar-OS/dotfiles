@@ -1,5 +1,6 @@
 layout {
     center-focused-column "always"
+    empty-workspace-above-first
 
     gaps 8
 

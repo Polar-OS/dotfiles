@@ -21,7 +21,7 @@ binds {
     Mod+Alt+E hotkey-overlay-title="Dialog: Logout/Session" { spawn-sh "uwsm app -- qs ipc call ui.dialog.logout toggle"; }
     Mod+Alt+Z hotkey-overlay-title="Overlay: Screensaver" { spawn-sh "uwsm app -- qs ipc call ui.overlay.screensaver toggle"; }
     Mod+Alt+I hotkey-overlay-title="Dialog: System Info" { spawn-sh "uwsm app -- qs ipc call ui.dialog.about toggle"; }
-    Mod+Alt+C hotkey-overlay-title="Dialog: Gemini Chat" { spawn-sh "uwsm app -- flatpak run app.zen_browser.zen --class=local.floating --new-window http://127.0.0.1:33541/"; }
+    Mod+Alt+C hotkey-overlay-title="Dialog: Gemini Chat" { spawn-sh "uwsm app -- flatpak run app.zen_browser.zen --class=local.floating --new-window http://127.0.0.1:4096/"; }
     Mod+Ctrl+C hotkey-overlay-title="Dialog: Gemini Chat" { spawn-sh "uwsm app -- flatpak run app.zen_browser.zen --class=local.floating --new-window https://gemini.google.com/"; }
     
     Mod+P hotkey-overlay-title="Pomodoro: Start Work" { spawn-sh "uwsm app -- qs ipc call ui.timer.pomodoro startWork"; }
@@ -30,6 +30,7 @@ binds {
     Mod+Alt+P hotkey-overlay-title="Pomodoro: Start Break" { spawn-sh "uwsm app -- qs ipc call ui.timer.pomodoro startBreak"; }
     
     Mod+V hotkey-overlay-title="Voice: Dictation Toggle" { spawn-sh "uwsm app -- qs ipc call ui.overlay.voice toggle"; }
+    Mod+Shift+V hotkey-overlay-title="Voice: System Command" { spawn-sh "uwsm app -- qs ipc call ui.overlay.voice voiceSystem"; }
     Mod+Slash hotkey-overlay-title="Help: Keybindings Cheatsheet" { spawn-sh "uwsm app -- qs ipc call ui.dialog.cheatsheet toggle"; }
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+Ctrl+R hotkey-overlay-title="Config: Reload Quickshell" { spawn-sh "uwsm app -- qs ipc call ui.config reload"; }

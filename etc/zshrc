@@ -26,6 +26,7 @@ export SHELL="nu"
 export TERM=xterm-256color
 
 # History configuration
+[ ! -d "$HOME/.local/share/zsh" ] && mkdir -p "$HOME/.local/share/zsh"
 HISTFILE="$HOME/.local/share/zsh/history"
 HISTSIZE=10000
 SAVEHIST=10000
@@ -155,10 +156,17 @@ zinit light sindresorhus/pure
 
 # Atuin configuration
 zinit ice as"command" from"gh-r" bpick"atuin-*.tar.gz" mv"atuin*/atuin -> atuin" \
-    atclone"./atuin init zsh > init.zsh; ./atuin gen-completions --shell zsh > _atuin" \
+    atclone"./atuin init zsh --disable-up-arrow > init.zsh; ./atuin gen-completions --shell zsh > _atuin" \
     atpull"%atclone" src"init.zsh"
 zinit light atuinsh/atuin
 
-zinit load atuinsh/atuin
+# zinit load atuinsh/atuin
+
+# Fix for zsh-vi-mode overwriting Ctrl-R
+function zvm_after_init() {
+    bindkey -M viins '^R' atuin-search-viins
+    bindkey -M vicmd '^R' atuin-search-vicmd
+}
 
 # vm_after_init_commands+=(eval "$(zoxide init zsh)")
+export OPENCODE_EXPERIMENTAL_FILEWATCHER=true

@@ -24,7 +24,19 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
-. "$HOME/.atuin/bin/env"
+# Disable systemd OSC context tracking (conflicts with Atuin)
+# This removes the systemd command tracking that uses OSC 3008 sequences
+unset -f __systemd_osc_context_precmdline __systemd_osc_context_ps0 2>/dev/null
+PROMPT_COMMAND=()  # Clear PROMPT_COMMAND array
+PS0=''  # Clear PS0
+
+# Debug logging for Atuin (remove after testing)
+export ATUIN_LOG=debug
+
+# Force bash to be more interactive-like even when not a login shell
+# This helps bash-preexec work correctly
+shopt -s histappend
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
-eval "$(atuin init bash)"
+eval "$(atuin init bash --disable-up-arrow)"
+export OPENCODE_EXPERIMENTAL_FILEWATCHER=true

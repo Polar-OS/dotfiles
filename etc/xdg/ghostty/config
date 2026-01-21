@@ -1,0 +1,27 @@
+command = uwsm app -- tmux
+
+# Font
+font-family = "CaskaydiaMono Nerd Font"
+font-style = Regular
+font-size = 11
+
+# Window
+window-padding-x = 2
+window-padding-y = 2
+window-padding-balance = true
+window-step-resize = false
+confirm-close-surface=false
+resize-overlay = never
+
+# Cursor stlying
+cursor-style = "block"
+cursor-style-blink = true
+shell-integration-features = no-cursor
+
+# Keyboard bindings
+keybind = f11=toggle_fullscreen
+keybind = ctrl+comma=reload_config
+
+# Theme managed by Polar/Quickshell
+# config-file = ?themes/polar-dynamic
+theme = polar-dynamic

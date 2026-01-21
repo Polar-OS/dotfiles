@@ -1,0 +1,12 @@
+[mgr]
+show_hidden = true
+[opener]
+play = [
+	{ run = 'flatpak run org.videolan.VLC "$@"', orphan = true, for = "unix" },
+]
+edit = [
+	{ run = '$EDITOR "$@"', block = true, for = "unix" },
+]
+open = [
+	{ run = 'xdg-open "$@"', desc = "Open" },
+]

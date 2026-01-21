@@ -2,14 +2,18 @@
 
 REPO_DIR="/tmp/dotfiles-repo"
 XDG_DEST_DIR="./etc"
+XDG_CONFIG_DIR="./etc/xdg"
 PROFILE_D_DIR="./etc/profile.d"
 SSH_DEST_DIR="./etc/ssh"
 USR_SHARE_DIR="./usr/share"
+USR_BIN_DIR="./usr/bin"
 
 mkdir -p "$XDG_DEST_DIR"
+mkdir -p "$XDG_CONFIG_DIR"
 mkdir -p "$PROFILE_D_DIR"
 mkdir -p "$SSH_DEST_DIR"
 mkdir -p "$USR_SHARE_DIR"
+mkdir -p "$USR_BIN_DIR"
 
 transform_name() {
     local name="$1"
@@ -48,23 +52,43 @@ process_item() {
         return
     fi
 
-    local target_root="$XDG_DEST_DIR"
+    local target_root="$XDG_CONFIG_DIR"
     local final_name="$new_base"
     
     if [ -z "$relative_path" ]; then
-        if [[ "$new_base" == ".bashrc" ]]; then
-            target_root="$PROFILE_D_DIR"
-            final_name="99-global-bashrc.sh"
-        elif [[ "$new_base" == ".zshrc" ]]; then
-            target_root="./etc"
-            final_name="zshrc"
-        elif [[ "$new_base" == ".ssh" ]]; then
-            target_root="$SSH_DEST_DIR"
-            final_name="ssh_config.d"
-        elif [[ "$new_base" == .* ]]; then
-            target_root="$XDG_DEST_DIR"
-            final_name="${new_base#.}"
-        fi
+        case "$new_base" in
+            ".zshrc")
+                target_root="$XDG_DEST_DIR"
+                final_name="zshrc"
+                ;;
+            ".bashrc")
+                target_root="$PROFILE_D_DIR"
+                final_name="99-global-bashrc.sh"
+                ;;
+            ".ssh")
+                target_root="$SSH_DEST_DIR"
+                final_name="ssh_config.d"
+                ;;
+            "keyd"|"niri"|"nushell"|"systemd"|"tmux"|"udev"|"pam.d"|"sddm"|"sddm.conf.d"|"plymouth"|"libinput")
+                target_root="$XDG_DEST_DIR"
+                ;;
+            "share")
+                target_root="./usr"
+                ;;
+            "bin")
+                target_root="./usr"
+                ;;
+            "quickshell"|".quickshell")
+                target_root="$XDG_CONFIG_DIR"
+                final_name="quickshell"
+                ;;
+            *)
+                if [[ "$new_base" == .* ]]; then
+                    target_root="$XDG_CONFIG_DIR"
+                    final_name="${new_base#.}"
+                fi
+                ;;
+        esac
     fi
 
     local new_path
@@ -84,11 +108,13 @@ process_item() {
             else
                 sub_relative="$relative_path/$new_base"
             fi
-            process_item_recursive "$subitem" "$sub_relative" "$target_root"
+            
+            process_item_recursive "$subitem" "" "$new_path" 
         done
         find "$new_path" -name ".git" -exec rm -rf {} +
         find "$new_path" -name ".gitmodules" -exec rm -f {} +
     else
+        mkdir -p "$(dirname "$new_path")"
         cp "$item" "$new_path"
         if [[ "$base" == executable_* ]]; then
             chmod +x "$new_path"
@@ -109,6 +135,7 @@ process_item_recursive() {
 
     local new_base=$(transform_name "$base")
     local new_path="$target_root/$relative_parent/$new_base"
+    new_path="${new_path//\/\//\/}"
 
     if [ -d "$item" ]; then
         mkdir -p "$new_path"
@@ -124,16 +151,21 @@ process_item_recursive() {
     fi
 }
 
-if [ "$XDG_DEST_DIR" != "./etc" ]; then
-    rm -rf "$XDG_DEST_DIR"
-fi
-rm -rf "$PROFILE_D_DIR" "$SSH_DEST_DIR" "./etc/zshrc" "$USR_SHARE_DIR/backgrounds" "$USR_SHARE_DIR/plymouth" "$USR_SHARE_DIR/wayland-sessions"
-mkdir -p "$XDG_DEST_DIR" "$PROFILE_D_DIR" "$SSH_DEST_DIR"
+rm -rf "$PROFILE_D_DIR" "$SSH_DEST_DIR" "./etc/zshrc"
+rm -rf "$XDG_CONFIG_DIR"
+
+mkdir -p "$XDG_DEST_DIR" "$XDG_CONFIG_DIR" "$PROFILE_D_DIR" "$SSH_DEST_DIR" "$USR_SHARE_DIR"
 
 if [ ! -d "$REPO_DIR" ]; then
     export CI=true DEBIAN_FRONTEND=noninteractive GIT_TERMINAL_PROMPT=0 GCM_INTERACTIVE=never HOMEBREW_NO_AUTO_UPDATE=1 GIT_EDITOR=: EDITOR=: VISUAL='' GIT_SEQUENCE_EDITOR=: GIT_MERGE_AUTOEDIT=no GIT_PAGER=cat PAGER=cat npm_config_yes=true PIP_NO_INPUT=1 YARN_ENABLE_IMMUTABLE_INSTALLS=false; git clone https://github.com/frieser/dotfiles "$REPO_DIR"
 else
     cd "$REPO_DIR" && git pull && cd -
+fi
+
+if [ -f "$REPO_DIR/dot_config/quickshell" ] || [ -d "$REPO_DIR/dot_config/quickshell" ] || [ -f "$REPO_DIR/dot_quickshell" ] || [ -d "$REPO_DIR/dot_quickshell" ] || [ -d "$REPO_DIR/quickshell" ]; then
+    echo "Quickshell configuration found."
+else
+    echo "WARNING: Quickshell configuration NOT found in repository."
 fi
 
 for item in "$REPO_DIR"/*; do

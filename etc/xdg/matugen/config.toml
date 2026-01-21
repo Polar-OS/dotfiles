@@ -1,0 +1,36 @@
+[config]
+reload_apps = true
+
+[templates.niri]
+input_path = "~/.config/matugen/templates/niri.kdl"
+output_path = "~/.config/niri/colors.kdl"
+post_hook = "~/.config/matugen/hooks/matugen-niri-layout.sh"
+
+[templates.tmux]
+input_path = "~/.config/matugen/templates/tmux.conf"
+output_path = "~/.config/tmux/colors.conf"
+post_hook = "~/.config/matugen/hooks/matugen-tmux-reload.sh"
+
+[templates.nvim]
+input_path = "~/.config/matugen/templates/nvim-theme.lua"
+output_path = "~/.config/nvim/lua/custom/matugen_theme.lua"
+post_hook = "~/.config/matugen/hooks/matugen-nvim-reload.sh"
+
+[templates.ghostty]
+input_path = "~/.config/matugen/templates/ghostty.conf"
+output_path = "~/.config/ghostty/themes/polar-dynamic"
+post_hook = "pkill -USR2 ghostty"
+
+[templates.opencode_theme]
+input_path = "~/.config/matugen/templates/opencode-theme.json"
+output_path = "~/.config/opencode/themes/generated.json"
+post_hook = "~/.config/matugen/hooks/refresh_opencode_theme.sh"
+
+[templates.quickshell]
+input_path = "~/.config/matugen/templates/quickshell-dynamic.json"
+output_path = "~/.config/quickshell/dynamic-colors.json"
+
+[templates.gtk_accent]
+input_path = "~/.config/matugen/templates/gtk-accent.sh"
+output_path = "/tmp/matugen-gtk-accent.sh"
+post_hook = "bash /tmp/matugen-gtk-accent.sh"

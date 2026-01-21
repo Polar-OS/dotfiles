@@ -1,0 +1,45 @@
+shell = "bash -c '{}'"
+default-scheme = "base16-mocha"
+
+[[items]]
+name = "niri"
+path = "https://github.com/tinted-theming/tinted-shell"
+themes-dir = "scripts"
+hook = "bash ~/.config/tinted-theming/tinty/hooks/tinty-niri-hook.sh"
+
+[[items]]
+name = "tmux"
+path = "https://github.com/tinted-theming/tinted-tmux"
+themes-dir = "colors"
+hook = "bash ~/.config/tinted-theming/tinty/hooks/tinty-tmux-fix.sh \"$TINTY_THEME_FILE_PATH\""
+
+
+[[items]]
+name = "ghostty"
+path = "https://github.com/tinted-theming/tinted-shell"
+themes-dir = "scripts" 
+hook = "bash ~/.config/tinted-theming/tinty/hooks/tinty-ghostty-overwrite.sh"
+
+[[items]]
+name = "opencode"
+path = "https://github.com/tinted-theming/tinted-shell"
+themes-dir = "scripts"
+hook = "bash ~/.config/tinted-theming/tinty/hooks/tinty-opencode-hook.sh"
+
+[[items]]
+name = "quickshell"
+path = "https://github.com/tinted-theming/tinted-shell"
+themes-dir = "scripts"
+hook = "bash ~/.config/tinted-theming/tinty/hooks/tinty-quickshell-hook.sh"
+
+[[items]]
+name = "vim"
+path = "https://github.com/tinted-theming/tinted-vim"
+themes-dir = "colors"
+hook = "bash ~/.config/tinted-theming/tinty/hooks/tinty-nvim-hook.sh"
+
+[[items]]
+name = "gtk"
+path = "https://github.com/tinted-theming/tinted-shell"
+themes-dir = "scripts"
+hook = "bash ~/.config/tinted-theming/tinty/hooks/tinty-gtk-hook.sh"

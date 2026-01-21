@@ -33,12 +33,16 @@ export-env {
             return
         }
     }
-    # hook
+    # hook - FIXED: append instead of replacing the entire array
     $env.config = (
         $env.config
-        | upsert hooks.pre_execution [ {|| 
-            $env.repl_commandline = (commandline) 
-            check_if_aliased $env.repl_commandline
-        } ]
+        | upsert hooks.pre_execution (
+            $env.config.hooks.pre_execution
+            | default []
+            | append {|| 
+                $env.repl_commandline = (commandline) 
+                check_if_aliased $env.repl_commandline
+            }
+        )
     )
 }

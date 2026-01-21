@@ -29,3 +29,6 @@ starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.n
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
 mkdir ~/.cache/carapace
 carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
+
+# Debug: Enable Atuin logging
+$env.ATUIN_LOG = "debug"
