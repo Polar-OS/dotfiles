@@ -80,20 +80,6 @@ return {
           -- or a suggestion from your LSP for this to activate.
           map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
 
-          -- Extract Variable
-          map('grv', function()
-            vim.lsp.buf.code_action {
-              context = { only = { 'refactor.extract' }, diagnostics = {} },
-            }
-          end, 'Extract Variable', { 'n', 'x' })
-
-          -- Extract Function
-          map('grf', function()
-            vim.lsp.buf.code_action {
-              context = { only = { 'refactor.extract' }, diagnostics = {} },
-            }
-          end, 'Extract Function', 'x')
-
           -- Find references for the word under your cursor.
           map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
@@ -122,11 +108,6 @@ return {
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
           map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
-          -- Ctrl-q for documentation (Hover) and signature help
-          -- Normal mode: Hover (press twice to focus the floating window)
-          map("<C-q>", vim.lsp.buf.hover, "Hover Documentation")
-          -- Insert mode: Signature help (very useful while typing arguments)
-          vim.keymap.set("i", "<C-q>", vim.lsp.buf.signature_help, { buffer = event.buf, desc = "LSP: Signature Help" })
 
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
           ---@param client vim.lsp.Client

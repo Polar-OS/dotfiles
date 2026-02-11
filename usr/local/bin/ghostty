@@ -1,0 +1,2 @@
+#!/bin/bash
+exec /usr/bin/ghostty --config-file=/etc/ghostty/config "$@"

@@ -9,8 +9,22 @@ if [ -f "$CONF_FILE" ] && grep -q "^User=" "$CONF_FILE"; then
     exit 0
 fi
 
-# Find the user with UID 1000
-TARGET_USER=$(getent passwd | awk -F: '$3 == 1000 {print $1}')
+# Find the first user with UID >= 1000 (excluding nobody)
+TARGET_USER=$(getent passwd | awk -F: '$3 >= 1000 && $3 < 65534 {print $1}' | head -n 1)
+
+# Fallback to frieser if no user found (common in this image)
+if [ -z "$TARGET_USER" ]; then
+    if getent passwd frieser > /dev/null; then
+        TARGET_USER="frieser"
+    else
+        echo "No regular user found. Creating default user 'frieser'..."
+        # Create the user with a dummy password or no password
+        # wheel group for sudo access
+        useradd -m -u 1000 -G wheel,video,audio,input -s /usr/bin/zsh frieser
+        passwd -d frieser
+        TARGET_USER="frieser"
+    fi
+fi
 
 if [ -n "$TARGET_USER" ]; then
     echo "Configuring SDDM autologin for user: $TARGET_USER"

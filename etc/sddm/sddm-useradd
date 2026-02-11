@@ -1,4 +1,19 @@
-#!/usr/bin/sh
+#!/usr/bin/env bash
+set -euo pipefail
 
+# Create SDDM system user
 getent group sddm > /dev/null || groupadd -r sddm
 getent passwd sddm > /dev/null || useradd -r -g sddm -c "SDDM Greeter Account" -d /var/lib/sddm -s /usr/sbin/nologin sddm
+
+# Create default user 'frieser' if no user with UID 1000 exists
+if ! getent passwd | awk -F: '$3 == 1000' | grep -q .; then
+    echo "Creating default user 'frieser'..."
+    getent group frieser > /dev/null || groupadd -g 1000 frieser
+    # Ensure zsh exists before assigning it, fallback to bash
+    SHELL_PATH="/usr/bin/zsh"
+    if [ ! -x "$SHELL_PATH" ]; then
+        SHELL_PATH="/usr/bin/bash"
+    fi
+    useradd -m -u 1000 -g 1000 -G wheel,video,audio,render -c "Frieser" -s "$SHELL_PATH" frieser
+    echo "frieser ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/frieser
+fi

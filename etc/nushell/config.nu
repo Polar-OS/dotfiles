@@ -19,32 +19,32 @@ $env.config.history = {
 # ALIASES #####################################################################
 
 # source list aliases
-source ~/.config/nushell/aliases/list.nu
+source /etc/nushell/aliases/list.nu
 
 # source git aliases
-source ~/.config/nushell/aliases/git.nu
+source /etc/nushell/aliases/git.nu
 
 # source atuin aliases
-source ~/.config/nushell/aliases/atuin.nu
+source /etc/nushell/aliases/atuin.nu
 
 # source short aliases
-source ~/.config/nushell/aliases/short.nu
+source /etc/nushell/aliases/short.nu
 
 # source distrobox aliases
-source ~/.config/nushell/aliases/distrobox.nu
+source /etc/nushell/aliases/distrobox.nu
 
 # source jj aliases
-source ~/.config/nushell/aliases/jj.nu
+source /etc/nushell/aliases/jj.nu
 
 # source workmux aliases
-source ~/.config/nushell/aliases/workmux.nu
+# source /etc/nushell/aliases/workmux.nu
 
 # source opencode aliases
-source ~/.config/nushell/aliases/opencode.nu
+# source /etc/nushell/aliases/opencode.nu
 
 
 # source functions
-source ~/.config/nushell/aliases/functions.nu
+source /etc/nushell/aliases/functions.nu
 
 # UTILS #######################################################################
 
@@ -53,11 +53,11 @@ source ~/.config/nushell/aliases/functions.nu
 source ~/.zoxide.nu
 
 # source the startup file
-source ~/.config/nushell/scripts/startup.nu
+source /etc/nushell/scripts/startup.nu
 
 
 # source you-should-use plugin
-source ~/.config/nushell/scripts/you-should-use.nu
+source /etc/nushell/scripts/you-should-use.nu
 
 # source carapace completions
 source ~/.cache/carapace/init.nu

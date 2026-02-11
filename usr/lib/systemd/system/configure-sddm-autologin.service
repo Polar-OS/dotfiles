@@ -1,5 +1,6 @@
 [Unit]
 Description=Configure SDDM Autologin for UID 1000
+After=sddm-boot.service
 Before=sddm.service
 ConditionPathExists=/usr/bin/configure-sddm-autologin
 
